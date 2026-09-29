@@ -40,22 +40,23 @@ seeds = [
 
 ---
 
-## Tier B: map, a lambda, chained string methods
+## Tier B: chained string methods, map, a lambda
 
-**Constraint:** You must use `map()` and a lambda. The body is a single `return` statement. No loops and no list comprehensions.
+**Constraint:** Each body is a single `return` statement. No loops and no list comprehensions.
 
-### 1. `seed_names(seeds: list) -> list`
+### 1. `clean_name(name: str) -> str`
 
-Each name with the parenthetical size removed and the whitespace trimmed.
+The name with the parenthetical size removed and the whitespace trimmed.
 
 ```python
-seed_names(seeds)
-['Sugar Snap Pea', 'Marigold Mix', 'Heirloom Tomato', 'Basil Genovese', 'Pumpkin Howden']
+clean_name("  Sugar Snap Pea (50g) ")   # 'Sugar Snap Pea'
+clean_name(" Heirloom Tomato (25g) ")   # 'Heirloom Tomato'
+clean_name("  Pumpkin Howden")          # 'Pumpkin Howden'
 ```
 
 ### 2. `grower_codes(seeds: list) -> list`
 
-Each grower as a lowercase code with spaces replaced by underscores.
+Each grower as a lowercase code with spaces replaced by underscores. You must use `map()` and a lambda.
 
 ```python
 grower_codes(seeds)
@@ -66,7 +67,7 @@ grower_codes(seeds)
 
 ## Tier B+: a conditional expression inside the lambda
 
-**Constraint:** Same as Tier B.
+**Constraint:** You must use `map()` and a lambda. The body is a single `return` statement. No loops and no list comprehensions.
 
 ### 3. `stock_flags(seeds: list) -> list`
 

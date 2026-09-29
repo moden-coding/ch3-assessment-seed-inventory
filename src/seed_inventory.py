@@ -8,27 +8,44 @@ seeds = [
 
 
 # === TIER B ===
-# Must use map() and a lambda. Body is a single return statement.
-# No loops, no list comprehensions.
+# Each body is a single return statement. No loops, no list comprehensions.
+# clean_name uses chained string methods. grower_codes must use map() and
+# a lambda.
 
-def seed_names(seeds: list) -> list:
-    """Return each name with the parenthetical size removed and the
-    whitespace trimmed."""
+def clean_name(name: str) -> str:
+    """Return the name with the parenthetical size removed and the
+    whitespace trimmed.
+
+    Examples:
+        clean_name("  Sugar Snap Pea (50g) ")  ->  'Sugar Snap Pea'
+        clean_name(" Heirloom Tomato (25g) ")  ->  'Heirloom Tomato'
+        clean_name("  Pumpkin Howden")         ->  'Pumpkin Howden'
+    """
     pass
 
 
 def grower_codes(seeds: list) -> list:
     """Return each grower as a lowercase code with spaces replaced by
-    underscores."""
+    underscores.
+
+    Example:
+        grower_codes(seeds)  ->
+        ['fieldstone_farms', 'verdant_seed_co', 'fieldstone_farms', 'verdant_seed_co', 'orchard_lane_seeds']
+    """
     pass
 
 
 # === TIER B+ ===
-# Same constraint as Tier B.
+# Must use map() and a lambda. Body is a single return statement.
+# No loops, no list comprehensions.
 
 def stock_flags(seeds: list) -> list:
     """Return "Reorder" for each seed whose stock has fallen below its
-    reorder point, "OK" otherwise."""
+    reorder point, "OK" otherwise.
+
+    Example:
+        stock_flags(seeds)  ->  ['Reorder', 'OK', 'OK', 'Reorder', 'OK']
+    """
     pass
 
 
@@ -38,26 +55,46 @@ def stock_flags(seeds: list) -> list:
 
 def low_stock(seeds: list) -> list:
     """For every seed below its reorder point, return a dict with keys
-    "name" (cleaned as in seed_names) and "short_by" (how many units below
-    the reorder point it is)."""
+    "name" (cleaned as in clean_name) and "short_by" (how many units below
+    the reorder point it is).
+
+    Example:
+        low_stock(seeds)  ->
+        [{'name': 'Sugar Snap Pea', 'short_by': 15}, {'name': 'Basil Genovese', 'short_by': 24}]
+    """
     pass
 
 
 def grower_count(seeds: list, grower: str) -> int:
     """Return how many seed varieties come from the given grower. The grower
-    is a code in the same form grower_codes produces."""
+    is a code in the same form grower_codes produces.
+
+    Examples:
+        grower_count(seeds, "fieldstone_farms")    ->  2
+        grower_count(seeds, "orchard_lane_seeds")  ->  1
+        grower_count(seeds, "sunridge_seed")       ->  0
+    """
     pass
 
 
 def seed_report(seeds: list, grower: str) -> dict:
     """Return everything from one grower that needs reordering, as a dict
     with keys "count" (how many seeds), "names" (their cleaned names) and
-    "units" (the total number of units short across all of them)."""
+    "units" (the total number of units short across all of them).
+
+    Examples:
+        seed_report(seeds, "fieldstone_farms")    ->  {'count': 1, 'names': ['Sugar Snap Pea'], 'units': 15}
+        seed_report(seeds, "orchard_lane_seeds")  ->  {'count': 0, 'names': [], 'units': 0}
+        seed_report([], "fieldstone_farms")       ->  {'count': 0, 'names': [], 'units': 0}
+    """
     pass
 
 
 def main():
-    print("seed_names:  ", seed_names(seeds))
+    print('clean_name("  Sugar Snap Pea (50g) "):', repr(clean_name("  Sugar Snap Pea (50g) ")))
+    print('clean_name(" Heirloom Tomato (25g) "):', repr(clean_name(" Heirloom Tomato (25g) ")))
+    print('clean_name("  Pumpkin Howden"):       ', repr(clean_name("  Pumpkin Howden")))
+    print()
     print("grower_codes:", grower_codes(seeds))
     print("stock_flags: ", stock_flags(seeds))
     print("low_stock:   ", low_stock(seeds))
